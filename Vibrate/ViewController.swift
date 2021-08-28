@@ -90,6 +90,9 @@ enum Vibration: Int, CaseIterable {
             AudioServicesPlaySystemSound(1520)
         case .v1521:
             AudioServicesPlaySystemSound(1521)
+            
         }
     }
 }
+
+
