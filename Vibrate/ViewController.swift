@@ -18,20 +18,20 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if cell == nil {
             cell = UITableViewCell()
         }
-        
+
         cell?.textLabel?.text = data[indexPath.row]
         return cell!
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        
+
         Vibration(rawValue: row)?.vibrate()
     }
 }
@@ -42,7 +42,7 @@ enum Vibration: Int, CaseIterable {
     static var allCases: [Vibration] {
         return [.error, .success, .warning, .light, .medium, .heavy, .rigid, .soft, .selection, .oldSchool, .v1519, .v1520, .v1521]
     }
-    
+
     case error = 0
     case success
     case warning
@@ -55,9 +55,9 @@ enum Vibration: Int, CaseIterable {
     case rigid
     case selection
     case oldSchool
-    case v1519 // 轻震动
-    case v1520 // 重震动
-    case v1521 // 3连轻震动
+    case v1519 // weak
+    case v1520 // strong
+    case v1521 // 3 weak
     public func vibrate() {
         switch self {
         case .error:
